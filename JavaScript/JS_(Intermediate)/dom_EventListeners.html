@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body style="background-color: #212121; color: aliceblue;">
+
+    <div id="btn">Click Me</div>
+    <h2 id="btn2">Don't Click ME</h2>
+    <h2 id="hi">Hi</h2>
+
+    <form action="submit" class="userDetails">
+        <input type="text" id="name" placeholder="Enter Your Name">
+        <input type="text" id="age" placeholder="Enter Your Age">
+        <!-- <input type="click" value="Submit"> -->
+        <button type="submit">Submit</button>
+        
+    </form>
+</body>
+<script>
+    const form = document.querySelector('.userDetails');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();     // To not load the page on submit & not send the detail in the url
+        const name = document.querySelector('#name').value;
+        const age = parseInt(document.querySelector('#age').value);
+        console.log(name, ' is ', age, ' years old.');
+    });
+    
+    // removeIt.remove();
+    // removeIt.parentNode.removeChild(removeIt);
+
+    document.getElementById('btn').onclick = ()=>{alert('You are alerted!!!')};     // We don't get event in .onclick()
+    
+    // Best way:
+    document.querySelector('#btn2').addEventListener('click', (e) => {alert('Beta tu dekh ub...')});        // We get event by .addEventListener()
+
+    document.querySelector('#hi').addEventListener('click', (e) => {
+        e.stopPropagation(); 
+        console.log(e); 
+        alert("Hi!")
+    }, false);   // Default 3rd param is false
+
+    // What is EventBubbling and EventCapturing?
+    
+    // EventBubbling: If the 3rd param in .addEventListener() isn't entered or is set to false, then the behavior is EventBubbling
+    // It means that first the inner event is triggered and then the outer one. Bottom to Top.
+    // e.stopPropagation(): You can use this to stop the outer events to be triggered.
+
+    // EventCapturing: If the 3rd param in .addEventListener() is set to true, then it shows the behavior of EventCapturing
+    // It means first outer event and then the inner one. Top to Bottom.
+
+
+    // Study these events: 
+    // type, timestamp, "e.preventDefault()", target, toElement, srcElement, currentTarget
+    //  clientX, clientY, screenX, screenY, cursorX, cursorY, #cursorWhenMoving, hover
+    // altKey, ctrlKey, shiftKey, keyCode
+    // => Make a typing speed check project 
+
+</script>
+</html>

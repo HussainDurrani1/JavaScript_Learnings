@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+
+<body style="background-color: #212121;">
+    <h1 style="color: white;">Hussain Durrani</h1>
+
+    <ul style="color: aliceblue;" class="langauge">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript
+    </ul>
+
+</body>
+
+<script>
+    const div = document.createElement('div');
+    div.className = 'hello'
+    div.id = Math.round(Math.random() * 100 + 1);
+    div.setAttribute('title', 'HELLOOOO')
+    div.style.backgroundColor = 'green';
+    div.style.color = 'white';
+    div.style.padding = '5px';
+    div.style.textAlign = 'center';
+
+    // const addedText = document.createTextNode('Hello World');
+    // div.appendChild(addedText);
+    div.innerText = 'Hello World';
+
+    document.body.appendChild(div);
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // Not good for Optimization as it has to iterate the whole tree to append a child
+    const addLang = (lang) => {
+        const li = document.createElement('li');
+        li.innerText = `=> ${lang}`;
+        document.querySelector('.langauge').appendChild(li);
+    }
+
+    addLang('Python')
+
+    const addLangs = (langs) => {
+        langs.forEach(lang => {
+            const li = document.createElement('li');
+            li.innerText = `> ${lang}`;
+            document.querySelector('.langauge').appendChild(li);
+        });
+    }
+
+    addLangs(['Cpp', 'Node JS', 'MySql', 'MongoDB', 'Express JS']);
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+    
+    const optiAddLang = (langName) => {
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(`==> ${langName}`));
+        document.querySelector('.langauge').appendChild(li);
+    }
+    optiAddLang('Java');    // More Optimized eay
+    
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+    // Edit 1:
+    const secondLang = document.querySelector("li:nth-child(2)");
+    // secondLang.innerHTML = "Golang"      // Less Optimized
+    const newLi = document.createElement('li');
+    newLi.textContent = 'Golang'
+    secondLang.replaceWith(newLi);
+    
+    // Edit 2:
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = '<li><b>TypeScript</b></li>'
+    
+    // Remove:
+    const lastLang = document.querySelector('li:last-child');
+    lastLang.remove();
+
+</script>
+
+</html>
