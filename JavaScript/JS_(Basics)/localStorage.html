@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+</head>
+
+<body>
+    <h1 class="heading">Set Theme</h1>
+    <form>
+        <select id="themeSelector">
+            <option value="default">Select a theme</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+        </select>
+    </form>
+
+    <h1 class="heading">Set you Name & Age</h1>
+    <form>
+        <label class="txt">Name: </label>
+        <input class="name" type="text" placeholder="Enter Your Name">
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <label class="txt">Age: </label>
+        <input class="age" type="number" placeholder="Enter Your Age">
+    </form>
+
+    <p class="txt">Your Name: <span class="txt name-span"></span></p>
+    <p class="txt">Your Age: <span class="txt age-span"></span></p>
+
+    <button id="clear">Clear</button>
+
+</body>
+<script>
+    const themeSelector = document.querySelector('#themeSelector');
+
+    const setColor = (val) => {
+        if (val == 'light') {
+            themeSelector.value = val;
+            document.body.style.backgroundColor = 'lightblue';
+
+            document.querySelector('.name').style.color = 'black';
+            document.querySelector('.age').style.color = 'black';
+
+            const elements = document.querySelectorAll('.heading');
+            const elements2 = document.querySelectorAll('.txt');
+
+            elements.forEach(element => {
+                element.style.color = 'black';
+            });
+            elements2.forEach(element => {
+                element.style.color = 'black';
+            });
+
+        } else if (val == 'dark') {
+            themeSelector.value = val;
+            document.body.style.backgroundColor = '#222';
+            const elements = document.querySelectorAll('.heading');
+            const elements2 = document.querySelectorAll('.txt');
+
+            document.querySelector('.name').style.color = 'black';
+            document.querySelector('.age').style.color = 'black';
+
+            elements.forEach(element => {
+                element.style.color = 'white';
+            });
+            elements2.forEach(element => {
+                element.style.color = 'white';
+            });
+        } else if (val == 'default') {
+            themeSelector.value = val;
+            document.body.style.backgroundColor = 'white';
+            document.querySelector('.name').style.color = 'black';
+            document.querySelector('.age').style.color = 'black';
+            document.querySelector('.txt').style.color = 'black';
+            document.querySelector('.heading').style.color = 'black';
+        }
+        else {
+            document.body.style.backgroundColor = val;
+        }
+    }
+
+    setColor(localStorage.getItem('theme') || 'pink');
+
+    // This will change the theme for the other tabs too automatically
+    window.addEventListener('storage', (e) => {
+        if (e.key == 'theme') {
+            setColor(e.newValue);
+            themeSelector.value = e.newValue;
+        }
+        else if (e.key == 'user') {
+            const user = JSON.parse(e.newValue);
+            document.querySelector('.name-span').textContent = user.name;
+            document.querySelector('.age-span').textContent = user.age;
+        }
+    })
+
+    themeSelector.addEventListener('change', (e) => {
+        // console.log(e.target.value);
+        setColor(e.target.value);
+        themeSelector.value = e.target.value;
+        localStorage.setItem('theme', e.target.value);
+    })
+
+    const nameInput = document.querySelector('.name');
+    const ageInput = document.querySelector('.age');
+
+    const nameOutput = document.querySelector('.name-span');
+    const ageOutput = document.querySelector('.age-span');
+
+    const user = JSON.parse(localStorage.getItem('user')) || { name: 'Durrani Sahab', age: '21' };
+
+    if (user.name != '' && user.age != '') {
+        nameOutput.textContent = user.name;
+        ageOutput.textContent = user.age;
+    }
+
+    nameInput.addEventListener('input', (e) => {
+        user.name = e.target.value;
+        localStorage.setItem('user', JSON.stringify(user));
+
+        nameOutput.textContent = nameInput.value;
+        ageOutput.textContent = ageInput.value;
+    })
+
+    ageInput.addEventListener('input', (e) => {
+        user.age = e.target.value;
+        localStorage.setItem('user', JSON.stringify(user));
+
+        ageOutput.textContent = ageInput.value;
+        nameOutput.textContent = nameInput.value;
+    })
+
+    document.querySelector('#clear').addEventListener('click', () => {
+        localStorage.clear();
+    });
+
+</script>
+
+</html>

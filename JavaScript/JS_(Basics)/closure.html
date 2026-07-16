@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="promisification.js"></script>
+    <title>Closure</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        span:hover {
+            border: 1px solid yellow;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span id="red"><b>RED</b></span>
+        <span id="blue"><b>BLUE</b></span>
+    </div>
+</body>
+<script>
+    function hiFunc() {
+        const name = 'Hussain Durrani';
+
+        return function sayHiToName() {  // This function has access to 'name' as it is in its Lexical Scope
+            console.log(`Hi ${name}.`);
+        }
+    }
+    // const hi = hiFunc();    // hiFunc also returns its Lexical Scope
+    // hi();   // This will print name due to "Closure"
+
+    //===================================================
+
+    // document.getElementById('red').addEventListener('click', () => {
+    //     document.body.style.backgroundColor = 'red';
+    // })
+
+    // document.getElementById('blue').addEventListener('click', () => {
+    //     document.body.style.backgroundColor = 'blue';
+    // })
+
+    // this is repeated code, We should now do this, as we might have many buttons
+
+    //========================================================
+
+    const red = document.getElementById('red')
+    const blue = document.getElementById('blue')
+
+    // function changeColor(c) {    // This is the wrong way
+    //     document.body.style.backgroundColor = c;
+    // }
+
+    // We have to give this Event Listener a function
+    // If we just give it this as below without calling, nothing will happen
+    // If we call it, then it won't wait for the event to happen
+
+    // So, we should actually return a function, with its Lexical Scope with color in it, 
+    // so that the eventListner has the Func to call
+
+    // red.addEventListener('click', changeColor('red'));
+    // blue.addEventListener('click', changeColor('blue'));
+
+    //--------------------------------------------------------------
+
+    // Closure
+    function changeColor(c) {
+        return function () {
+            document.body.style.backgroundColor = c;
+            console.log(c);
+        }
+    }
+
+    red.addEventListener('click', changeColor('red'));
+    blue.addEventListener('click', changeColor('blue'));
+
+
+</script>
+
+</html>
