@@ -1,20 +1,31 @@
-// For Each:
+// For Each:  It just iterates over the array, but does not return anything
 
 const fruits = ["kiwi", "mango", "banana", 'orange', 'grape'];
+
+fruits.forEach((fruit) => {
+    console.log("For Each Loop Iteration: " + fruit);
+});
 
 fruits.forEach((fruit, index) => {
     console.log("For Each Loop Iteration: " + index + " - " + fruit);
 });
 
+const numbers1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let oddNums1 = []
+numbers1.forEach((num) => {
+    if (num % 2 !== 0) oddNums1.push(num)
+});
+console.log('Odd Numbers: ', oddNums1);
+
 // It does not return a value, it just executes the provided function for each element in the array.
-fruits.forEach((el, idx) => {
+fruits.forEach((el, idx, array) => {
     console.log(`Index: ${idx}, Element: ${el.toUpperCase()}`);
     return el.toUpperCase();    // this return value is not used anywhere, it is just for demonstration
 });
 
 console.log('\n<=============================================>\n');
 
-// Map:
+// Map:     This works as For Each but also returns array
 const months = ["Jan", "Feb", "Mar", "Apr"]
 let m1 = months.map((el, idx, arr) => {
     console.log(`Idx: ${idx+1}, Month: ${el}`);
@@ -31,12 +42,15 @@ console.log('Map\'s Return Value: ',m2);
 
 console.log('\n<=============================================>\n');
 
-// Filter:
+// Filter:  We have to give a condition
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let evenNumbers = numbers.filter((num) => {
     // this returns the value if it has a truthy value, so we use a condition
     return num % 2 === 0;   // this return value is used to create a new array of even numbers
 });
+
+let oddNums = numbers.filter((num) => num % 2 !== 0);
+console.log('Odd Numbers: ', oddNums);
 
 console.log('Original Array: ', numbers);
 console.log('Filter\'s Return Value: ', evenNumbers);
@@ -68,6 +82,13 @@ console.log('Filtered Keys: ', filteredKeys);
 console.log('\n<=============================================>\n');
 
 // Reduce:
+
+// 1st iteration) accumulator = initialValue (0)
+// 2nd iteration) accumulator = accumulator + currentValue
+// 3rd iteration) accumulator = accumulator + currentValue
+
+// Initial value (0, -Infinity) is only used in the 1st iteration
+
 const sum = numbers.reduce((accumulator, currentValue) => {
     // accumulator is the accumulated value, currentValue is the current element being processed in the array
     return accumulator + currentValue;  // this return value is used to accumulate the sum of all numbers in the array
@@ -85,8 +106,8 @@ const max = numbers.reduce((accumulator, currentValue) => {
 console.log('Max Value: ', max);
 
 // Reduce with objects:
-const totalAge = users.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue.age;
+const totalAge = users.reduce((acc, currVal) => {
+    return acc + currVal.age;
 }, 0);  
 
 console.log('Total Age: ', totalAge);

@@ -1,13 +1,5 @@
 // push, pop, shift, unshift, splice, slice, concat, join, indexOf, lastIndexOf, includes, reverse, sort
 
-// example of each method
-
-// Do => .JOIN()
-// Do => .FLAT(Infinity)
-// Do => .FROM()
-// Do => .OF()
-
-
 // 1. push() - adds one or more elements to the end of an array
 let fruits = ['apple', 'banana'];
 console.log(fruits); // ['apple', 'banana']
@@ -93,3 +85,81 @@ console.log(sortedFruits3); // ['kiwi', 'mango', 'papaya', 'pineapple', 'banana'
 let arr = [[1, 2], [3, 4], [5, 6]];
 console.log(arr.length); // 3
 console.log(arr[0].length); // 2
+
+
+
+
+// ===============================================================
+
+
+// 14. flat() - creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+let nestedArr = [1, [2, 3], [4, [5, 6]]];
+let flatArr = nestedArr.flat();
+console.log(flatArr); // [1, 2, 3, 4, [5, 6]]
+
+let deepFlatArr = nestedArr.flat(2); // or flat(Infinity) for any depth
+console.log(deepFlatArr); // [1, 2, 3, 4, 5, 6]
+
+// 15. Array.from() - creates a new, shallow-copied Array instance from an array-like or iterable object.
+let str = "hello";
+let charArray = Array.from(str);
+console.log(charArray); // ['h', 'e', 'l', 'l', 'o']
+
+let set = new Set([1, 2, 3, 3, 4]);
+let setArray = Array.from(set);
+console.log(setArray); // [1, 2, 3, 4]
+
+let map = new Map([['a', 1], ['b', 2]]);
+let mapArray = Array.from(map);
+console.log(mapArray); // [['a', 1], ['b', 2]]
+
+// Array.from with a mapping function
+let numbersString = "12345";
+let numbersArray = Array.from(numbersString, Number);
+console.log(numbersArray); // [1, 2, 3, 4, 5]
+
+// 16. Array.of() - creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments.
+let newArray = Array.of(1, 2, 3, 'a', true);
+console.log(newArray); // [1, 2, 3, 'a', true]
+
+let singleElementArray = Array.of(7);
+console.log(singleElementArray); // [7]
+
+let emptyArray = Array.of();
+console.log(emptyArray); // []
+
+// 17) Array.join
+const fruitsJoined = fruits.join('-');
+console.log('fruitsJoined: ', fruitsJoined);
+
+// 18) Array.fill
+const arrFill = [1, 2, 3, 4, 5];
+arrFill.fill(0, 2, 4); // fill with 0 from index 2 up to (but not including) index 4
+console.log('arrFill: ', arrFill); // [1, 2, 0, 0, 5]
+
+const arrFill2 = new Array(5).fill('x');
+console.log('arrFill2: ', arrFill2); // ['x', 'x', 'x', 'x', 'x']
+
+// 19) Array.copyWithin
+const arrCopyWithin = [1, 2, 3, 4, 5];
+arrCopyWithin.copyWithin(0, 3); // copy from index 3 to index 0
+console.log('arrCopyWithin: ', arrCopyWithin); // [4, 5, 3, 4, 5]
+
+const arrCopyWithin2 = [1, 2, 3, 4, 5];
+arrCopyWithin2.copyWithin(2, 0, 2); // copy from index 0 to (but not including) index 2, to index 2
+console.log('arrCopyWithin2: ', arrCopyWithin2); // [1, 2, 1, 2, 5]
+
+// 20) Array.find
+const numbersFind = [5, 12, 8, 130, 44];
+const found = numbersFind.find(element => element > 10);
+console.log('found: ', found); // 12
+
+// 21) Array.findIndex
+const numbersFindIndex = [5, 12, 8, 130, 44];
+const indexFound = numbersFindIndex.findIndex(element => element > 10);
+console.log('indexFound: ', indexFound); // 1
+
+// 22) Array.findLast
+const numbersFindLast = [5, 12, 8, 130, 44];
+const foundLast = numbersFindLast.findLast(element => element > 10);
+console.log('foundLast: ', foundLast); // 44

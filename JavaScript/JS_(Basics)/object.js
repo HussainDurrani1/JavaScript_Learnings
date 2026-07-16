@@ -130,6 +130,33 @@ console.log(myObj.toLocaleString());
 
 
 
+// Rest Operator:
+// function calculatePrice(val){
+//     return val;
+// }
+// console.log(calculatePrice(200))
+
+// function calculatePrice(...vals){    // This ... is rest operator
+//     return vals;
+// }
+// console.log(calculatePrice(200, 300, 400, 500))     // This will return array of these values
+
+// function calculatePrice(val1, val2, ...vals){    // This ... is rest operator
+//     // val1 = 200 & val2 = 300
+//     return valsl
+// }
+// console.log(calculatePrice(200, 300, 400, 500))     // This will return [400, 500] only
+
+
+function calculatePrice(...vals){
+    let sum = 0;
+    vals.forEach((val) => sum += val)
+    return sum;
+}
+
+console.log(calculatePrice(200, 300, 400, 500))     // Now This will return the actuall sum of any number of values entered in params
+
+
 // API (JSON):
 
 // {   // Wrong way

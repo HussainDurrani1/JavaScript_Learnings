@@ -1,10 +1,19 @@
 // 'For Of' and 'For In' & 'For', 'While', 'Do While' Loops
 
-// For Of: It is for iterable objects like arrays, strings, maps, sets, etc. It iterates over the values of the iterable object.
-// For In: It is for objects. It iterates over the keys of the object.
+// for...of:
+// - Used with iterable objects (Arrays, Strings, Maps, Sets, etc.)
+// - Returns the VALUES of the iterable.
+
+// for...in:
+// - Used to iterate over an object's enumerable property KEYS.
+// - Returns the property names (keys), not the values.
+// - For arrays, it returns the indexes: "0", "1", "2", ...
+// - For plain objects, it returns the object's keys.
+// - It does NOT work for Map because Map entries are not object properties. A Map doesn't store its data as object properties.
 
 
 // For Of Loop
+// Cannot work with objects (non-iterable), but can work with Maps (map is also non-iterable)
 const fruits = ["kiwi", "mango", "banana"];
 for (const fruit of fruits) {
     console.log("For Of Loop Iteration: " + fruit);
@@ -12,18 +21,24 @@ for (const fruit of fruits) {
 
 // Examples
 
-const personKeys = Object.keys(person);
-for (const key of personKeys) {
-    console.log("For Of Loop with Object.keys() Iteration: " + key + " - " + person[key]);
+const someone = {
+    name: "John",
+    age: 30,
+    city: "New York"
+}; 
+
+const someoneKeys = Object.keys(someone);
+for (const key of someoneKeys) {
+    console.log("For Of Loop with Object.keys() Iteration: " + key + " - " + someone[key]);
 }
 
-const personValues = Object.values(person);
-for (const value of personValues) {
+const someoneValues = Object.values(someone);
+for (const value of someoneValues) {
     console.log("For Of Loop with Object.values() Iteration: " + value);
 }
 
-const personEntries = Object.entries(person); // [ [ 'name', 'John' ], [ 'age', 30 ], [ 'city', 'New York' ]
-for (const [key, value] of personEntries) {
+const someoneEntries = Object.entries(someone); // [ [ 'name', 'John' ], [ 'age', 30 ], [ 'city', 'New York' ]
+for (const [key, value] of someoneEntries) {
     console.log("For Of Loop with Object.entries() Iteration: " + key + " - " + value);
 }
 
@@ -79,6 +94,7 @@ for (const [key, value] of map) {
 // --------------------------------------------------------------
 
 // For In Loop
+// Also Works with Objects as well
 const person = {
     name: "John",
     age: 30,
