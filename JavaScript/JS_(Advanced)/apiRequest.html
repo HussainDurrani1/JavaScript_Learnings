@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- Value State Description
+
+0 UNSENT Client has been created. open() not called yet.
+1 OPENED open() has been called.
+2 HEADERS_RECEIVED send() has been called, and headers and status are available.
+3 LOADING Downloading; responseText holds partial data.
+4 DONE The operation is complete. -->
+
+<body style="color: aliceblue; background-color: #212121;">
+
+    <h1>Enter your GitHub URL to get your Information: </h1>
+    <p>This is your details and image...</p>
+</body>
+<script>
+    const reqURL = 'https://api.github.com/users/HussainDurrani1';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', reqURL);
+
+    // xhr.addEventListener('load', () => {
+    //     const dataa = JSON.parse(xhr.responseText)
+    //     console.log(data.name);
+    // })
+
+    // xhr.onload = () => {
+    //     const dataa = JSON.parse(xhr.responseText)
+    //     console.log(data.name);
+    // }
+
+    xhr.onreadystatechange = function () {      // Learn about its methods and use cases
+        // xhr.responseType = 'json'
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+            console.log('username: ', data.login);
+            console.log('Name: ', data.name);
+            console.log('followers: ', data.followers);
+            console.log('following: ', data.following);
+            console.log('Bio: ', data.bio);
+        }
+    }
+    xhr.send();
+
+</script>
+
+</html>
