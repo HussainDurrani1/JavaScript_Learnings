@@ -70,7 +70,7 @@ const chainedPromise = new Promise(function (resolve, reject) {
         reject('Network connection failed.');
     };
     xhr.send();
-})
+});
 
 chainedPromise.then(function (res) {
     let data = JSON.parse(res);

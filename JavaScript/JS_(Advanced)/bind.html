@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind</title>
+</head>
+
+<body>
+    <button>Click Button</button>
+</body>
+
+<script>
+    class myReact {
+        constructor() {
+            this.library = 'React'
+            this.url = 'https://localhost:5678'
+
+            // document.querySelector('button').addEventListener('click', this.handleClick) // THis has issue
+
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+
+            // document.querySelector('button').addEventListener('click', this.handleClick1)
+        }
+
+
+        handleClick() {
+            // What happens is:
+            // This handleClick Function is given to the eventListener
+            // But in its 'this', it only gets that function,
+            // So it does not have access to the library or url
+            // although it has the reference of button in its 'this'
+
+            // After adding '.bind(this)', it will work perfectly
+            console.log('Button Clicked....');
+            console.log(this);
+            console.log(this.library);
+        }
+
+        // 'this' is automatically bound lexically
+        //
+        // 'this' is NOT created by the arrow function.
+        //
+        // It simply uses the 'this' of the constructor,
+        // where this function was created.
+        //
+        // So even if eventListener tries to make
+        // 'this' point to the button, the arrow function
+        // ignores that and continues using the myReact object.
+        //
+        // That's why '.bind(this)' is not needed here.
+        handleClick1 = () => {
+            console.log('Button Clicked....');
+            console.log(this);
+            console.log(this.library);
+        }
+
+    }
+
+    const app = new myReact();
+</script>
+
+</html>

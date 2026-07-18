@@ -32,6 +32,8 @@
         • fetch(...).then(...)
 */
 
+// ! We can use type="module" in your scipt tag in html file, to use await even outside an async function
+
 const getAllUsers = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
         .then((response) => {
