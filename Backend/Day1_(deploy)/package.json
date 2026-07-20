@@ -1,0 +1,23 @@
+{
+  "name": "backend_deploy",
+  "version": "1.0.0",
+  "description": "a basic app to deploy seeing Chai aur code",
+  "keywords": [
+    "node",
+    "npm",
+    "chai",
+    "hello",
+    "durrani"
+  ],
+  "license": "ISC",
+  "author": "Hussain Durrani",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}

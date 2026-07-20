@@ -4,7 +4,7 @@ const now = Date.now(); // 1783933818463
 
 const date = new Date(now);
 
-console.log('new Date().getTime(): ',new Date().getTime())
+console.log('new Date().getTime(): ', new Date().getTime())
 console.log('Date(): ', Date());
 console.log('now = Date.now(): ', now);
 console.log(`new Date(now): ${date}`);
@@ -14,7 +14,7 @@ console.log(now.toLocaleString());
 const newNow = new Date(now);
 console.log('new Date(now): ', newNow);
 
-const day = 24*60*60*1000;
+const day = 24 * 60 * 60 * 1000;
 const tomorrow = new Date(now + day);
 console.log('tomorrow: ', tomorrow);
 

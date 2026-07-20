@@ -10,12 +10,13 @@ function greet() {
 
 // sayHi(); // Throws TypeError: sayHi is not a function
 
-const sayHi = function() {
+const sayHi = function () {
   console.log("Hi!");
 };
 
 
 
+// sayHello(); // Throws TypeError: sayHello is not a function
 const sayHello = () => console.log('Hello, World!');
 
 sayHello(); // Output: "Hello, World!"

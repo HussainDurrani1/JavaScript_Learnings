@@ -49,8 +49,18 @@ let lastIndex = allFruits.lastIndexOf('banana');
 console.log(lastIndex); // 2
 
 // 11. includes() - returns true if an array contains a specified element
-let hasMango = allFruits.includes('mango');
-console.log(hasMango); // true
+const fruits = ['apple', 'banana', 'orange'];
+
+console.log(fruits.includes('banana')); // true
+console.log(fruits.includes('grape'));  // false
+console.log(fruits.includes('Apple'));  // false (because it is case-sensitive)
+
+
+const numbers = [10, 20, 30, 40];
+
+// Start searching from index 2
+console.log(numbers.includes(10, 2)); // false
+
 
 // 12. reverse() - reverses the order of the elements in an array
 let reversedFruits = allFruits.reverse();
@@ -150,6 +160,9 @@ arrCopyWithin2.copyWithin(2, 0, 2); // copy from index 0 to (but not including) 
 console.log('arrCopyWithin2: ', arrCopyWithin2); // [1, 2, 1, 2, 5]
 
 // 20) Array.find
+// The find() method in JavaScript returns the first element in an array
+// that satisfies a given testing function.
+// If no elements match the condition, it returns undefined
 const numbersFind = [5, 12, 8, 130, 44];
 const found = numbersFind.find(element => element > 10);
 console.log('found: ', found); // 12

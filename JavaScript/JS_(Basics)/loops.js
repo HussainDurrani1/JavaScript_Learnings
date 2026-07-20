@@ -13,7 +13,7 @@
 
 
 // For Of Loop
-// Cannot work with objects (non-iterable), but can work with Maps (map is also non-iterable)
+// Cannot work with objects (non-iterable), but can work with Maps
 const fruits = ["kiwi", "mango", "banana"];
 for (const fruit of fruits) {
     console.log("For Of Loop Iteration: " + fruit);
@@ -25,7 +25,7 @@ const someone = {
     name: "John",
     age: 30,
     city: "New York"
-}; 
+};
 
 const someoneKeys = Object.keys(someone);
 for (const key of someoneKeys) {
@@ -68,7 +68,7 @@ for (const [a, b] of nestedArray) {
 const nestedObject = {
     user1: { name: "John", age: 30 },
     user2: { name: "Jane", age: 25 },
-    user3: { name: "Bob", age: 35 } 
+    user3: { name: "Bob", age: 35 }
 };
 for (const { name, age } of Object.values(nestedObject)) {
     console.log("For Of Loop with Nested Object Destructuring Iteration: " + name + " - " + age);
@@ -85,7 +85,7 @@ const map = new Map([
     ["name", "John"],
     ["age", 30],
     ["city", "New York"]
-]); 
+]);
 
 for (const [key, value] of map) {
     console.log("For Of Loop with Map Destructuring Iteration: " + key + " - " + value);
@@ -99,7 +99,7 @@ const person = {
     name: "John",
     age: 30,
     city: "New York"
-};  
+};
 for (const key in person) {
     console.log("For In Loop Iteration: " + key + " - " + person[key]);
 }
@@ -126,12 +126,12 @@ for (const [key, value] in personEntries2) {
 const nestedObject2 = {
     user1: { name: "John", age: 30 },
     user2: { name: "Jane", age: 25 },
-    user3: { name: "Bob", age: 35 } 
+    user3: { name: "Bob", age: 35 }
 };
 for (const key in nestedObject2) {
     const { name, age } = nestedObject2[key];
     console.log("For In Loop with Nested Object Destructuring Iteration: " + name + " - " + age);
-}   
+}
 
 // for in loop with nested array destructuring
 const nestedArray2 = [[1, 2], [3, 4], [5, 6]];

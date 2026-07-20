@@ -9,8 +9,8 @@ user1.greet();
 
 
 const user = {
-  name: "Bob",
-  showName() { console.log(this.name); }
+    name: "Bob",
+    showName() { console.log(this.name); }
 };
 
 user.showName();
@@ -24,24 +24,24 @@ fixedCall(); //  "Bob"
 
 
 
-function hey(){
+function hey() {
     const name = 'Hussain';
     console.log(this.name);
 }
-hey()   
+hey()
 
-function helloo(){
+function helloo() {
     console.log(this);
 }
-helloo()   
+helloo()
 
-const hey1 = function(){
+const hey1 = function () {
     const name = 'Hussain';
     console.log(this.name);
 }
 hey1()
 
-const helloo1 = function(){
+const helloo1 = function () {
     console.log(this);
 }
 helloo1()
@@ -59,14 +59,14 @@ const helloo2 = () => {
 helloo2()
 
 
-const add = (n1, n2) => n1+n2;
+const add = (n1, n2) => n1 + n2;
 console.log(add(2, 3));
 
-const sub = (n1, n2) => {return n1-n2};
+const sub = (n1, n2) => { return n1 - n2 };
 console.log(sub(5, 3));
 
 // Returning an Object:
-const giveObject = () => ({name: 'Hussain', age: 2});
+const giveObject = () => ({ name: 'Hussain', age: 2 });
 console.log(giveObject());
 
 
@@ -93,7 +93,7 @@ console.log(giveObject());
 //     console.log(`Hello there!`);
 // })()     // This will give error, because you need to end it with a semi-colon
 
-(function greetMe(){
+(function greetMe() {
     console.log(`Hello there!`);
 })();
 
