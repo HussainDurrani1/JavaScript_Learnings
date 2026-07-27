@@ -1,0 +1,1 @@
+// Learn about singleton in js with objects, module (IIFE) based, class based and function
